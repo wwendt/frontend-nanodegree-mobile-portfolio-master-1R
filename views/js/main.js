@@ -468,6 +468,7 @@ var resizePizzas = function(size) {
 window.performance.mark("mark_start_generating"); // collect timing data
 
 // This for-loop actually creates and appends all of the pizzas when the page loads
+
 for (var i = 2; i < 100; i++) {
   var pizzasDiv = document.getElementById("randomPizzas");
   pizzasDiv.appendChild(pizzaElementGenerator(i));
@@ -498,12 +499,17 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 
 // Moves the sliding background pizzas based on scroll position
 function updatePositions() {
+
   frame++;
   window.performance.mark("mark_start_frame");
 
   var items = document.querySelectorAll('.mover');
-  for (var i = 0; i < items.length; i++) {
-    var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5)); //forced reflow likely a performance bottleneck
+  var i;
+  var docScroll = (document.body.scrollTop / 1250);
+  var phaseStore = [];
+  var l = items.length;
+  for (i = 0; i < l; i++) {
+    var phase = Math.sin(docScroll + (i % 5)); //forced reflow likely a performance bottleneck
     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
   }
 
@@ -528,7 +534,9 @@ window.addEventListener('scroll', updatePositions);
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
-  for (var i = 0; i < 200; i++) {
+  var i;
+
+  for (i = 0; i < 200; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";
