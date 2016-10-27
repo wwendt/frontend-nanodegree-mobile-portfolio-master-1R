@@ -507,7 +507,7 @@ function updatePositions() {
   var items = document.querySelectorAll('.mover');
   var i;
   var docScroll = (document.body.scrollTop / 1250);
-  var phaseStore = [];
+  //var phaseStore = [];
   var l = items.length;
   for (i = 0; i < l; i++) {
     var phase = Math.sin(docScroll + (i % 5)); //forced reflow likely a performance bottleneck
@@ -536,10 +536,12 @@ document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
   var i;
+  var user_screen_height = screen.height;
   //moving pizzas
   var movingPizzas = document.getElementById("movingPizzas1")
   //Counting # of pizzas per viewport
   var intViewportWidth = window.innerWidth;
+  //var pizza_num = (user_screen_height * s) / cols;
 
   for (i = 0; i < 24; i++) {
     var elem = document.createElement('img');
