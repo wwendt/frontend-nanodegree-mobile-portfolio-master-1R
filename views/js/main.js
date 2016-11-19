@@ -505,13 +505,13 @@ function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
 
-  var items = document.getElementsByClassName('.mover');
+  var items = document.getElementsByClassName('mover');
   var i;
   var docScroll = (document.body.scrollTop / 1250);
   //var phases = [];
   var l = items.length;
 
-
+  
   for (i = 0; i < l; i++) {
     var phase = Math.sin(docScroll + (i % 5)); //forced reflow likely a performance bottleneck
     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
