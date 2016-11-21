@@ -527,7 +527,7 @@ function updatePositions() {
     logAverageFrame(timesToUpdatePosition);
   }
 
-  requestAnimationFrame(updatePositions);
+ // requestAnimationFrame(updatePositions);
 }
 
 requestAnimationFrame(updatePositions);
